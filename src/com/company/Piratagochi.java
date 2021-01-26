@@ -43,5 +43,43 @@ public class Piratagochi {
         }
     }
 
+    public void comer(){
+        if(isEstaHambriento()){
+            setEstaHambriento(true);
+        }
+    }
+    public void dormir(int horasDurmiendo){
+        for (int i = 0; i < horasDurmiendo; i++){
+            if (getEnergia() < horasDurmiendo) {
+                setEnergia(getEnergia() + 1);
+            } else {
+               setNivelFelicidad(getNivelFelicidad() - 1);
+            }
+        }
+    }
+    public void jugar(int horasJugando){
+        if (!isEstaHambriento()){
+            for (int i = 0; i < horasJugando; i++){
+                setNivelFelicidad(getNivelFelicidad()+1);
+                setEnergia(getEnergia()-1);
+            }
+            setEstaHambriento(true);
+        } else {
+            for (int i = 0; i < horasJugando; i++){
+                setNivelFelicidad(getNivelFelicidad()-1);
+                setEnergia(getEnergia()-1);
+            }
+        }
+    }
+    public void getNecesidades(){
+        if (isEstaHambriento()){
+            System.out.println("Tengo hambre");
+        } else if (getEnergia() < 5){
+            System.out.println("Tengo sueño. Nivel de energia "+getEnergia());
+        } else if (getNivelFelicidad() < 5){
+            System.out.println("Estoy triste :(. Nivel de felicidad "+getNivelFelicidad());
+        }
+    }
+
     
 }
